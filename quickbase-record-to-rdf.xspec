@@ -8,8 +8,6 @@
                xmlns:impl="urn:x-xspec:compile:xslt:impl"
                stylesheet="quickbase-record-to-rdf.xsl">
     
-    <x:param name="include-source-reference" select="false()"/>
-    
     <x:scenario label="Basic test (creative work)">
         <x:call template="test">
             <x:param name="qdbapi">
