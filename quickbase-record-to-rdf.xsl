@@ -77,7 +77,10 @@
                     <xsl:copy-of select="$meta"/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:message select="concat('Ingen regel for QuickBase-felt i Record-tabell: ', @id)"/>
+                    <xsl:variable name="label" select="/qdbapi/table/fields/field[@id=current()/@id]/label" as="xs:string?"/>
+                    <xsl:variable name="book" select="(../f[@id='13'])[1]" as="xs:string?"/>
+                    <xsl:variable name="metadata-source" select="concat('Quickbase Record@', $book, ' ', $label)"/>
+                    <xsl:message select="concat('Ingen regel for QuickBase-felt i Record-tabell: ', @id, '(', $metadata-source, ')')"/>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:for-each>
